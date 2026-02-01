@@ -1,0 +1,30 @@
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+
+
+# ===== Dependencies =====
+node_modules/
+
+# ===== Build output =====
+dist/
+build/
+out/
+
+
+
+# ===== IDE / Editor =====
+.vscode/
+.idea/
+*.iml
+
+# ===== Test / Coverage =====
+coverage/
+
+# ===== Cache =====
+.eslintcache
+.cache/
+
+# ===== Misc =====
+*.tsbuildinfo
