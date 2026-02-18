@@ -1,20 +1,36 @@
-import "./App.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Home } from "./Components/Home/Home";
-import { Shop } from "./Shop/Shop";
-import { Link } from "react-router-dom";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import Home from "./pages/Home";
+import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart";
+import Header from "./Components/Header";
+import { CartProvider } from "./context/CartContext";
+
+function RootLayout() {
+  return (
+    <div className="max-w-[1440px] mx-auto">
+      <Header />
+      <Outlet />
+    </div>
+  );
+}
+
 const router = createBrowserRouter([
-  { path: "/", element: <Home /> },
-  {path:"/Shop",element: <Shop/>}
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "product/:id", element: <ProductDetail /> },
+      { path: "cart", element: <Cart /> },
+    ],
+  },
 ]);
 
 function App() {
   return (
-    
-    <div className="w-[1440px] mx-auto" c>
+    <CartProvider>
       <RouterProvider router={router} />
-    </div>
-    
+    </CartProvider>
   );
 }
 
