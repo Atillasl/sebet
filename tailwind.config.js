@@ -7,3 +7,13 @@ module.exports = {
   plugins: [],
 }
 
+module.exports = {
+  darkMode: 'class', // Bu sətri əlavə et
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}

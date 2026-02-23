@@ -1,19 +1,32 @@
-import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import React, { useState, useEffect } from 'react';
+import { Logo } from './Logo';
+import { Navigation } from './Navigation';
+import { ThemeToggle } from './ThemeToggle';
+import { RankBadge } from './RankBadge';
+import { UserActions } from './UserActions';
 
-export default function Header() {
-  const { cart } = useContext(CartContext);
+const Header = ({ onLogout }) => {
+  const [darkMode, setDarkMode] = useState(localStorage.getItem('theme') === 'dark');
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', darkMode);
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
 
   return (
-    <div className="flex justify-between p-6 bg-gray-100">
-      <Link to="/" className="font-bold text-xl">
-        FakeStore
-      </Link>
-
-      <Link to="/cart">
-        Cart ({cart.length})
-      </Link>
-    </div>
+    <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b-4 border-gray-100 dark:border-gray-800 sticky top-0 z-50 h-24 flex items-center transition-all duration-500">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 w-full flex items-center justify-between">
+        <Logo />
+        <Navigation />
+        
+        <div className="flex items-center gap-4">
+          <ThemeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+          <RankBadge />
+          <UserActions onLogout={onLogout} />
+        </div>
+      </div>
+    </header>
   );
-}
+};
+
+export default Header;
