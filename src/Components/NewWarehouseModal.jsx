@@ -24,7 +24,7 @@ const NewWarehouseModal = ({ onClose, onSubmit }) => {
         {/* Modal Header */}
         <div className="flex justify-between items-center mb-10">
           <h2 className="text-2xl font-black text-gray-800 dark:text-white uppercase tracking-tighter italic">
-            Yeni Sektor Aç
+            Yeni Anbar Yarat
           </h2>
           <button 
             onClick={onClose} 
@@ -38,7 +38,7 @@ const NewWarehouseModal = ({ onClose, onSubmit }) => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <label className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase ml-4 tracking-[0.2em]">
-              Sektorun Adı
+              Anbarın Adı
             </label>
             <input 
               required
@@ -52,7 +52,7 @@ const NewWarehouseModal = ({ onClose, onSubmit }) => {
           
           <div className="space-y-2">
             <label className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase ml-4 tracking-[0.2em]">
-              Koordinatlar (Ünvan)
+              Ünvan
             </label>
             <input 
               required
@@ -68,7 +68,7 @@ const NewWarehouseModal = ({ onClose, onSubmit }) => {
             type="submit" 
             className="w-full py-6 bg-indigo-600 text-white rounded-[2rem] font-black shadow-xl border-b-8 border-indigo-800 hover:brightness-110 active:border-b-0 active:translate-y-2 transition-all uppercase text-xs tracking-[0.2em]"
           >
-            Sektoru Təsdiqlə 🚀
+            Yarat 🚀
           </button>
         </form>
       </div>

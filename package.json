@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-three/fiber": "^9.5.0",
     "@reduxjs/toolkit": "^2.11.2",
     "@tanstack/react-query": "^5.90.21",
     "@testing-library/dom": "^10.4.1",
@@ -17,6 +18,8 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.13.0",
     "react-scripts": "5.0.1",
+    "react-simple-maps": "^3.0.0",
+    "three": "^0.183.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -1,84 +1,72 @@
-import React, { useState, useMemo } from 'react';
-import { Plus, Search, Download, Layers, Package, TrendingUp, Zap, Crown } from 'lucide-react';
-import { useWarehouses } from '../hooks/useWarehouses.js';
-import { StatCard } from '../components/StatCard';
-import WarehouseCard from '../components/WarehouseCard';
-import NewWarehouseModal from '../components/NewWarehouseModal';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { 
+  Box, Video, Sparkles, 
+  ArrowRight 
+} from 'lucide-react';
 
 const Dashboard = () => {
-  const { warehouses, addWarehouse, deleteWarehouse } = useWarehouses();
-  const [searchTerm, setSearchTerm] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Filterləməni optimallaşdırırıq
-  const filteredWarehouses = useMemo(() => {
-    return warehouses.filter(w => 
-      w.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-      w.location.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }, [warehouses, searchTerm]);
-
-  const stats = [
-    { label: "Sektorlar", val: warehouses.length, icon: <Layers />, color: "indigo" },
-    { label: "Resurslar", val: warehouses.reduce((a, b) => a + b.itemCount, 0), icon: <Package />, color: "emerald" },
-    { label: "Artım", val: "12%", icon: <TrendingUp />, color: "purple" },
-    { label: "Limit", val: "∞", icon: <Zap />, color: "orange" }
-  ];
+  const navigate = useNavigate();
 
   return (
-    <div className="p-4 md:p-8 max-w-7xl mx-auto bg-[#F8FAFC] dark:bg-gray-950 min-h-screen pb-20 transition-colors duration-500">
+    <div className="p-6 md:p-12 max-w-7xl mx-auto bg-[#F8FAFC] dark:bg-gray-950 min-h-screen pb-32 transition-all">
       
-      {/* HEADER SECTION */}
-      <header className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12 bg-white dark:bg-gray-900 p-8 rounded-[3rem] shadow-sm border-b-8 border-indigo-100 dark:border-indigo-900/50">
-        <div className="flex items-center gap-5">
-          <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-xl rotate-3">
-            <Crown size={32} />
-          </div>
-          <div>
-            <h1 className="text-3xl font-black text-gray-900 dark:text-white tracking-tighter italic uppercase">Baş Qərargah</h1>
-            <div className="flex items-center gap-2 mt-1">
-              <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-[10px] font-black rounded-lg uppercase">Sistem Online</span>
-            </div>
-          </div>
+      {/* HEADER: Xoş gəldiniz */}
+      <header className="mb-16">
+        <div className="flex items-center gap-3 text-indigo-600 dark:text-indigo-400 mb-4">
+          <Sparkles size={20} className="animate-pulse" />
+          <span className="text-[10px] font-black uppercase tracking-[0.5em]">System Control Unit</span>
         </div>
-        
-        <div className="flex gap-4 w-full md:w-auto">
-          <button onClick={() => setIsModalOpen(true)} className="flex-1 md:flex-none bg-indigo-600 text-white px-8 py-4 rounded-[1.8rem] font-black uppercase text-[11px] tracking-widest shadow-lg border-b-4 border-indigo-800 active:border-b-0 active:translate-y-1 transition-all flex items-center justify-center gap-2">
-            <Plus size={20} /> Yeni Sektor Aç
-          </button>
-        </div>
+        <h1 className="text-6xl font-black text-gray-900 dark:text-white tracking-tighter italic uppercase leading-none">
+          Nəzarət <br /> Mərkəzi
+        </h1>
       </header>
 
-      {/* STATS GRID */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-        {stats.map((stat, i) => <StatCard key={i} {...stat} />)}
+      {/* İKİ BÖYÜK QAPI (MAIN CARDS) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        {/* ANBAR PANELI */}
+        <button 
+          onClick={() => navigate('/warehouses')}
+          className="group relative bg-white dark:bg-gray-900 p-12 rounded-[3.5rem] border-2 border-transparent hover:border-indigo-500 shadow-xl transition-all text-left overflow-hidden h-[400px] flex flex-col justify-end"
+        >
+          <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 transition-opacity">
+            <Box size={240} />
+          </div>
+          <div className="bg-indigo-600 text-white w-20 h-20 rounded-[1.5rem] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform shadow-lg shadow-indigo-200 dark:shadow-none">
+            <Box size={40} />
+          </div>
+          <div>
+            <h2 className="text-4xl font-black text-gray-900 dark:text-white uppercase italic mb-2 tracking-tighter">Anbar</h2>
+            <p className="text-gray-400 font-bold text-sm uppercase tracking-widest mb-8 max-w-[250px]">Bütün texnika və sektorları idarə et</p>
+            <div className="flex items-center gap-2 text-indigo-600 font-black text-xs uppercase tracking-[0.2em]">
+              Daxil ol <ArrowRight size={18} />
+            </div>
+          </div>
+        </button>
+
+        {/* LAYİHƏ PANELI */}
+        <button 
+          onClick={() => navigate('/projects')}
+          className="group relative bg-gray-900 dark:bg-indigo-900/20 p-12 rounded-[3.5rem] border-2 border-transparent hover:border-white shadow-xl transition-all text-left overflow-hidden h-[400px] flex flex-col justify-end"
+        >
+          <div className="absolute top-0 right-0 p-12 opacity-10 group-hover:opacity-20 transition-opacity">
+            <Video size={240} className="text-white" />
+          </div>
+          <div className="bg-white text-gray-900 w-20 h-20 rounded-[1.5rem] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform shadow-lg shadow-white/10">
+            <Video size={40} />
+          </div>
+          <div>
+            <h2 className="text-4xl font-black text-white uppercase italic mb-2 tracking-tighter">Produksiya Paneli</h2>
+            <p className="text-gray-300/60 font-bold text-sm uppercase tracking-widest mb-8 max-w-[250px]">Çəkiliş layihələrini və arendaları izlə</p>
+            <div className="flex items-center gap-2 text-white font-black text-xs uppercase tracking-[0.2em]">
+              Daxil ol <ArrowRight size={18} />
+            </div>
+          </div>
+        </button>
+
       </div>
 
-      {/* SEARCH */}
-      <div className="relative mb-10 group">
-        <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-indigo-500" size={22} />
-        <input 
-          type="text" 
-          placeholder="Sektorlarda axtarış..." 
-          className="w-full bg-white dark:bg-gray-900 p-6 pl-16 rounded-[2.2rem] outline-none shadow-sm focus:ring-4 ring-indigo-50 dark:ring-indigo-900/20 transition-all font-bold"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
-
-      {/* WAREHOUSE GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredWarehouses.map(w => (
-          <WarehouseCard key={w.id} warehouse={w} onDelete={deleteWarehouse} />
-        ))}
-      </div>
-
-      {isModalOpen && (
-        <NewWarehouseModal 
-          onClose={() => setIsModalOpen(false)} 
-          onSubmit={addWarehouse} 
-        />
-      )}
     </div>
   );
 };
