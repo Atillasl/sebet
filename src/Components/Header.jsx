@@ -22,15 +22,15 @@ const Header = ({ onLogout }) => {
   }, [darkMode]);
 
   return (
-    <header className="bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-900/50 sticky top-0 z-50 h-20 md:h-24 flex items-center transition-all">
+    <header className="bg-white/90 dark:bg-[#05070A]/90 backdrop-blur-md border-b-2 border-yellow-500/10 dark:border-yellow-500/20 sticky top-0 z-50 h-20 md:h-24 flex items-center transition-all">
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full flex items-center justify-between">
         
-        {/* SOL: Logo (Brendin kimliyi) */}
+        {/* SOL: Logo */}
         <div className="flex-shrink-0">
           <Logo />
         </div>
         
-        {/* MƏRKƏZ: Naviqasiya (Fokus nöqtəsi) */}
+        {/* MƏRKƏZ: Naviqasiya */}
         <div className="hidden lg:block flex-1 max-w-fit px-8">
           <Navigation />
         </div>
@@ -38,7 +38,7 @@ const Header = ({ onLogout }) => {
         {/* SAĞ: İstifadəçi İdarəetmə Paneli */}
         <div className="flex items-center gap-4 md:gap-8">
           {/* Alətlər qrupu */}
-          <div className="flex items-center gap-2 md:gap-4 border-r border-gray-100 dark:border-gray-800 pr-4 md:pr-8">
+          <div className="flex items-center gap-2 md:gap-4 border-r border-slate-200 dark:border-yellow-500/10 pr-4 md:pr-8">
             <div className="hover:scale-110 transition-transform">
               <ThemeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
             </div>

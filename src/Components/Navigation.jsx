@@ -18,7 +18,7 @@ const navLinks = [
     icon: <Database size={16} strokeWidth={3} /> 
   },
   { 
-    path: '/reports', // Geri qaytarılan Hesabatlılıq bölməsi
+    path: '/reports', 
     label: 'Hesabatlar', 
     icon: <BarChart3 size={16} strokeWidth={3} /> 
   },
@@ -28,9 +28,8 @@ export const Navigation = () => {
   const { pathname } = useLocation();
 
   return (
-    <nav className="hidden lg:flex items-center gap-2 bg-gray-100/50 dark:bg-gray-800/50 p-1.5 rounded-[2rem] border border-gray-200 dark:border-gray-700 backdrop-blur-sm">
+    <nav className="hidden lg:flex items-center gap-2 bg-slate-100/50 dark:bg-white/5 p-1.5 rounded-[2rem] border border-slate-200 dark:border-white/10 backdrop-blur-sm">
       {navLinks.map((link) => {
-        // Aktivlik yoxlaması: Alt səhifələrdə belə (məs: /reports/monthly) menyu aktiv qalsın
         const isActive = 
           pathname === link.path || 
           (link.path === '/projects' && pathname.startsWith('/project/')) ||
@@ -43,8 +42,8 @@ export const Navigation = () => {
             to={link.path} 
             className={`flex items-center gap-2 font-black text-[10px] uppercase tracking-[0.15em] transition-all duration-300 py-2.5 px-6 rounded-2xl
               ${isActive 
-                ? 'text-white bg-indigo-600 shadow-lg shadow-indigo-500/30 -translate-y-0.5' 
-                : 'text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-white dark:hover:bg-gray-900'
+                ? 'text-black bg-yellow-500 shadow-lg shadow-yellow-500/20 -translate-y-0.5' 
+                : 'text-slate-500 dark:text-slate-400 hover:text-yellow-600 dark:hover:text-yellow-500 hover:bg-white dark:hover:bg-white/5'
               }`}
           >
             {link.icon} {link.label}
