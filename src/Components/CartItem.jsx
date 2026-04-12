@@ -1,6 +1,9 @@
 import React from 'react';
+import { translations, productCategoryLabels } from '../i18n';
 
-const CartItem = ({ item, onAdd, onRemove }) => {
+const CartItem = ({ item, onAdd, onRemove, language }) => {
+  const t = translations[language];
+  const categoryLabel = productCategoryLabels[language][item.category] || item.category;
   return (
     <div className="flex flex-col sm:flex-row items-center bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow gap-4">
       
@@ -14,10 +17,9 @@ const CartItem = ({ item, onAdd, onRemove }) => {
       {/* Məhsul Məlumatları */}
       <div className="flex-grow text-center sm:text-left">
         <h3 className="text-lg font-bold text-gray-800">{item.name}</h3>
-        <p className="text-sm text-gray-500 mb-1">{item.category}</p>
+        <p className="text-sm text-gray-500 mb-1">{categoryLabel}</p>
         <div className="flex items-center justify-center sm:justify-start gap-2">
-          <span className="text-blue-600 font-bold">{item.price} ₼</span>
-          <span className="text-xs text-gray-400">x {item.qty}</span>
+          <span className="text-slate-900 font-bold">{item.price} ₼ {t.currencyPerDay}</span>
         </div>
       </div>
 
@@ -48,7 +50,7 @@ const CartItem = ({ item, onAdd, onRemove }) => {
 
       {/* Cəm Qiymət (Bu məhsuldan neçə dənədirsə onun cəmi) */}
       <div className="hidden lg:block text-right min-w-[100px]">
-        <p className="text-xs text-gray-400 uppercase tracking-wider">Cəmi</p>
+        <p className="text-xs text-gray-400 uppercase tracking-wider">{t.cart.totalLabel}</p>
         <p className="text-lg font-black text-gray-900">{(item.price * item.qty).toFixed(2)} ₼</p>
       </div>
     </div>

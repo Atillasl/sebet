@@ -2,9 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 /* Bura bir neçə kiçik əlavə edək ki, dizayn daha yumşaq görünsün */
-body {
+html, body {
   margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-reverse {
+  animation: marquee 30s linear infinite reverse;
+  will-change: transform;
 }
