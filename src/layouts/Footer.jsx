@@ -31,10 +31,10 @@ const Footer = ({ setPage, language, setLanguage }) => {
               <h4 className="text-slate-100 font-bold mb-5 uppercase text-xs tracking-[0.3em]">{t.footer.links}</h4>
               <ul className="space-y-3 text-sm text-slate-300">
                 <li><button onClick={() => setPage('home')} className="hover:text-amber-400 transition-colors">{t.nav.home}</button></li>
-                <li><button onClick={() => setPage('camera')} className="hover:text-amber-400 transition-colors">{t.nav.camera}</button></li>
-                <li><button onClick={() => setPage('lighting')} className="hover:text-amber-400 transition-colors">{t.nav.lighting}</button></li>
-                <li><button onClick={() => setPage('grip')} className="hover:text-amber-400 transition-colors">{t.nav.grip}</button></li>
+                <li><button onClick={() => setPage('equipment')} className="hover:text-amber-400 transition-colors">{t.nav.equipment}</button></li>
                 <li><button onClick={() => setPage('studio')} className="hover:text-amber-400 transition-colors">{t.nav.studio}</button></li>
+                <li><button onClick={() => setPage('about')} className="hover:text-amber-400 transition-colors">{t.nav.about}</button></li>
+                <li><button onClick={() => setPage('cart')} className="hover:text-amber-400 transition-colors">{t.nav.cart}</button></li>
               </ul>
             </div>
 

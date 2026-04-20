@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { translations } from '../i18n';
 
 const Header = ({ countCartItems, setPage, language, setLanguage }) => {
+  const [equipmentMenuOpen, setEquipmentMenuOpen] = useState(false);
+
   return (
     <header className="w-full">
       <nav className="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
@@ -24,10 +26,48 @@ const Header = ({ countCartItems, setPage, language, setLanguage }) => {
           </div>
 
           <div className="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-600">
-            <button onClick={() => setPage('camera')} className="hover:text-amber-500 transition-colors">{translations[language].nav.camera}</button>
-            <button onClick={() => setPage('grip')} className="hover:text-amber-500 transition-colors">{translations[language].nav.grip}</button>
-            <button onClick={() => setPage('lighting')} className="hover:text-amber-500 transition-colors">{translations[language].nav.lighting}</button>
+            <div
+              className="relative"
+              onMouseEnter={() => setEquipmentMenuOpen(true)}
+              onMouseLeave={() => setEquipmentMenuOpen(false)}
+            >
+              <button
+                onClick={() => setPage('equipment')}
+                className="hover:text-amber-500 transition-colors"
+              >
+                {translations[language].nav.equipment}
+              </button>
+              <div
+                className={`absolute left-0 top-full z-50 mt-3 w-52 overflow-hidden rounded-3xl border border-slate-200 bg-white py-3 shadow-2xl transition-all duration-200 ${equipmentMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}
+              >
+                <button
+                  onClick={() => setPage('camera')}
+                  className="w-full px-5 py-3 text-left text-sm text-gray-600 hover:bg-slate-50"
+                >
+                  {translations[language].nav.camera}
+                </button>
+                <button
+                  onClick={() => setPage('grip')}
+                  className="w-full px-5 py-3 text-left text-sm text-gray-600 hover:bg-slate-50"
+                >
+                  {translations[language].nav.grip}
+                </button>
+                <button
+                  onClick={() => setPage('lighting')}
+                  className="w-full px-5 py-3 text-left text-sm text-gray-600 hover:bg-slate-50"
+                >
+                  {translations[language].nav.lighting}
+                </button>
+                <button
+                  onClick={() => setPage('studio')}
+                  className="w-full px-5 py-3 text-left text-sm text-gray-600 hover:bg-slate-50"
+                >
+                  {translations[language].nav.studio}
+                </button>
+              </div>
+            </div>
             <button onClick={() => setPage('studio')} className="hover:text-amber-500 transition-colors">{translations[language].nav.studio}</button>
+            <button onClick={() => setPage('about')} className="hover:text-amber-500 transition-colors">{translations[language].nav.about}</button>
           </div>
 
           <div className="flex items-center gap-3">

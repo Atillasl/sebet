@@ -3,6 +3,8 @@ import Header from './layouts/Header';
 import Footer from './layouts/Footer';
 import Home from './pages/Home';
 import CategoryPage from './pages/CategoryPage';
+import EquipmentPage from './pages/EquipmentPage';
+import AboutPage from './pages/AboutPage';
 import Cart from './pages/Cart';
 import ProductPage from './pages/ProductPage';
 import { translations } from './i18n';
@@ -108,6 +110,15 @@ function App() {
             language={language}
             previousPage={previousPage}
           />
+        ) : page === 'equipment' ? (
+          <EquipmentPage
+            onAdd={addToCart}
+            setPage={setPage}
+            language={language}
+            onSelectProduct={openProductPage}
+          />
+        ) : page === 'about' ? (
+          <AboutPage setPage={setPage} language={language} />
         ) : (
           <CategoryPage
             page={page}

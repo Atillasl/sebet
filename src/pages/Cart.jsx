@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CartItem from '../Components/CartItem';
 import { translations } from '../i18n';
 
 const Cart = ({ cartItems, onAdd, onRemove, setPage, language }) => {
+  const [orderPlaced, setOrderPlaced] = useState(false);
   const t = translations[language];
   // Qiymət hesablamaları
   const itemsPrice = cartItems.reduce((acc, current) => acc + current.qty * current.price, 0);
@@ -78,10 +79,13 @@ const Cart = ({ cartItems, onAdd, onRemove, setPage, language }) => {
                 </div>
               </div>
 
-              <button className="w-full mt-8 bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-slate-800 transition-all shadow-xl active:scale-[0.98]">
+              <button
+                onClick={() => setOrderPlaced(true)}
+                className="w-full mt-8 bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-slate-800 transition-all shadow-xl active:scale-[0.98]"
+              >
                 {t.buttons.checkout}
               </button>
-              
+
               <p className="text-center text-xs text-gray-400 mt-4">
                 {t.cart.safe}
               </p>
@@ -89,41 +93,48 @@ const Cart = ({ cartItems, onAdd, onRemove, setPage, language }) => {
 
             <div className="bg-white p-6 rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100">
               <h3 className="text-lg font-black text-gray-900 mb-4">{t.cart.contactTitle}</h3>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2" htmlFor="orderPhone">
-                    {t.cart.contactPhone}
-                  </label>
-                  <input
-                    id="orderPhone"
-                    type="tel"
-                    placeholder={t.cart.contactPhonePlaceholder}
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-400"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2" htmlFor="orderEmail">
-                    {t.cart.contactEmail}
-                  </label>
-                  <input
-                    id="orderEmail"
-                    type="email"
-                    placeholder={t.cart.contactEmailPlaceholder}
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-400"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2" htmlFor="orderNotes">
-                    {t.cart.contactNotes}
-                  </label>
-                  <textarea
-                    id="orderNotes"
-                    rows={4}
-                    placeholder={t.cart.contactNotesPlaceholder}
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-400 resize-none"
-                  />
-                </div>
-              </div>
+              {!orderPlaced ? (
+                <p className="text-sm text-gray-500">{t.cart.contactHiddenNote}</p>
+              ) : (
+                <>
+                  <p className="text-sm text-amber-600 mb-6">{t.cart.contactOpenNote}</p>
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2" htmlFor="orderPhone">
+                        {t.cart.contactPhone}
+                      </label>
+                      <input
+                        id="orderPhone"
+                        type="tel"
+                        placeholder={t.cart.contactPhonePlaceholder}
+                        className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-400"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2" htmlFor="orderEmail">
+                        {t.cart.contactEmail}
+                      </label>
+                      <input
+                        id="orderEmail"
+                        type="email"
+                        placeholder={t.cart.contactEmailPlaceholder}
+                        className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-400"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2" htmlFor="orderNotes">
+                        {t.cart.contactNotes}
+                      </label>
+                      <textarea
+                        id="orderNotes"
+                        rows={4}
+                        placeholder={t.cart.contactNotesPlaceholder}
+                        className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-400 resize-none"
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
 
