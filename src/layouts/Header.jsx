@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { translations } from '../i18n';
 
 const Header = ({ countCartItems, setPage, language, setLanguage }) => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { translations, sectionImages } from '../i18n';
 
 const Home = ({ setPage, language }) => {

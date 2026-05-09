@@ -1,4 +1,3 @@
-import React from 'react';
 import { translations, productCategoryLabels } from '../i18n';
 
 const ProductCard = ({ product, onAdd, language, onSelect }) => {

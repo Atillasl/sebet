@@ -1,4 +1,3 @@
-import React from 'react';
 import { products } from '../data/products';
 import ProductCard from '../Components/ProductCard';
 import { translations, englishCategoryNames, sectionImages } from '../i18n';

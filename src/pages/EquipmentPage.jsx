@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { products } from '../data/products';
 import ProductCard from '../Components/ProductCard';
 import CategoryBar from '../Components/CategoryBar';
