@@ -1,4 +1,3 @@
-import React from 'react';
 import { translations, productCategoryLabels } from '../i18n';
 
 const ProductPage = ({ product, onAdd, setPage, language, previousPage }) => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { translations } from '../i18n';
 
 const Footer = ({ setPage, language, setLanguage }) => {

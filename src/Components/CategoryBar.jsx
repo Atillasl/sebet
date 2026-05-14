@@ -1,5 +1,3 @@
-import React from 'react';
-
 const CategoryBar = ({ categories, selectedCategory, setSelectedCategory }) => {
   return (
     <div className="flex flex-wrap items-center justify-center gap-3 overflow-x-auto pb-6 scrollbar-hide sm:justify-start">

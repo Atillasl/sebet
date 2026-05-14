@@ -1,4 +1,3 @@
-import React from 'react';
 import { translations, productCategoryLabels } from '../i18n';
 
 const CartItem = ({ item, onAdd, onRemove, language }) => {
