@@ -48,7 +48,10 @@ export const translations = {
       subtitle: 'Axtarış və kateqoriyalara görə məhsulları süzün.',
       searchLabel: 'Axtarış',
       searchPlaceholder: 'Məhsul adı, kateqoriya və ya izah üzrə axtar...',
+      warehouseLabel: 'Anbar',
       allCategories: 'Bütün kateqoriyalar',
+      allWarehouses: 'Bütün anbarlar',
+      loading: 'Məhsullar yüklənir...',
       categoryTitle: 'Kateqoriyalar',
       categoryDescription: 'Bu avadanlıqları kateqoriyalara görə süzün.'
     },
@@ -86,7 +89,8 @@ export const translations = {
       viewPage: 'Məhsullara bax',
       addToCart: 'Kirayə et',
       continueShopping: 'Alış-verişə davam et',
-      checkout: 'Sifarişə keç'
+      checkout: 'Sifarişə keç',
+      close: 'Bağla'
     },
     cart: {
       title: 'Səbətiniz',
@@ -109,7 +113,13 @@ export const translations = {
       contactHiddenNote: 'Sifariş etdikdən sonra əlaqə məlumatları burada göstəriləcək.',
       contactOpenNote: 'Sifarişiniz qəbul edildi. Xahiş edirik əlaqə məlumatlarınızı daxil edin.',
       dailyRent: 'Gündəlik kirayə',
-      totalLabel: 'Cəmi'
+      totalLabel: 'Cəmi',
+      orderModalTitle: 'Sifariş məlumatları',
+      customerName: 'Ad Soyad',
+      requiredFieldsError: 'Zəhmət olmasa məcburi sahələri doldurun.',
+      orderSuccess: 'Sifarişiniz qəbul edildi!',
+      orderError: 'Sifariş göndərilərkən xəta baş verdi. Yenidən yoxlayın.',
+      sendingOrder: 'Sifariş göndərilir...'
     },
     productPage: {
       back: 'Kateqoriyaya qayıt',
@@ -170,7 +180,10 @@ export const translations = {
       subtitle: 'Search and narrow products by category.',
       searchLabel: 'Search',
       searchPlaceholder: 'Search by name, category, or description...',
+      warehouseLabel: 'Warehouse',
       allCategories: 'All categories',
+      allWarehouses: 'All warehouses',
+      loading: 'Loading products...',
       categoryTitle: 'Categories',
       categoryDescription: 'Filter gear by category.'
     },
@@ -208,7 +221,8 @@ export const translations = {
       viewPage: 'Browse products',
       addToCart: 'Rent now',
       continueShopping: 'Continue shopping',
-      checkout: 'Proceed to order'
+      checkout: 'Proceed to order',
+      close: 'Close'
     },
     cart: {
       title: 'Your Cart',
@@ -231,7 +245,13 @@ export const translations = {
       contactHiddenNote: 'Contact fields will appear here after placing the order.',
       contactOpenNote: 'Your order is received. Please enter your contact details.',
       dailyRent: 'Daily rental',
-      totalLabel: 'Total'
+      totalLabel: 'Total',
+      orderModalTitle: 'Order details',
+      customerName: 'Full name',
+      requiredFieldsError: 'Please fill in required fields.',
+      orderSuccess: 'Your order has been received!',
+      orderError: 'Failed to send order. Please check and try again.',
+      sendingOrder: 'Sending order...'
     },
     productPage: {
       back: 'Back to category',

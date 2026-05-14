@@ -1,9 +1,9 @@
 import React from 'react';
 import { products } from '../data/products';
-import ProductCard from '../Components/ProductCard';
+import ProductCard from '../components/ProductCard';
 import { translations, englishCategoryNames, sectionImages } from '../i18n';
 
-const CategoryPage = ({ page, onAdd, setPage, language, onSelectProduct }) => {
+const CategoryPage = ({ page, onAdd, setPage, language, onSelectProduct, cartItems = [] }) => {
   const t = translations[language];
   const section = t.categories[page];
   const sectionProducts = section ? products.filter((item) => item.category === englishCategoryNames[page]) : [];
@@ -61,6 +61,7 @@ const CategoryPage = ({ page, onAdd, setPage, language, onSelectProduct }) => {
               onAdd={onAdd}
               language={language}
               onSelect={(selected) => onSelectProduct?.(selected, page)}
+              cartItems={cartItems}
             />
           ))}
         </div>

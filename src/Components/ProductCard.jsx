@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { translations, productCategoryLabels } from '../i18n';
 
-const ProductCard = ({ product, onAdd, language, onSelect }) => {
+const ProductCard = ({ product, onAdd, language, onSelect, cartItems = [] }) => {
   const t = translations[language];
   const categoryLabel = productCategoryLabels[language][product.category] || product.category;
+  const [addedToCart, setAddedToCart] = useState(false);
+  
+  const isInCart = cartItems.some((item) => item.id === product.id);
+  
+  const handleAddToCart = (event) => {
+    event.stopPropagation();
+    onAdd(product);
+    setAddedToCart(true);
+    setTimeout(() => setAddedToCart(false), 1500);
+  };
+  
   return (
     <div
       className="bg-white p-5 rounded-3xl shadow-xl hover:shadow-2xl transition-shadow duration-300 w-full cursor-pointer"
@@ -18,7 +29,7 @@ const ProductCard = ({ product, onAdd, language, onSelect }) => {
       }}
     >
       <img 
-        src={product.image} 
+        src={product.image || 'https://via.placeholder.com/720x480?text=No+Image'} 
         alt={product.name} 
         className="w-full h-44 sm:h-48 object-cover rounded-3xl mb-5"
       />
@@ -27,7 +38,7 @@ const ProductCard = ({ product, onAdd, language, onSelect }) => {
           <h3 className="text-xl font-bold text-gray-900">{product.name}</h3>
           <p className="text-sm uppercase text-amber-500 font-semibold tracking-[0.2em]">{categoryLabel}</p>
         </div>
-        <p className="text-sm text-gray-500 min-h-[2.5rem]">{product.description}</p>
+        <p className="text-sm text-gray-500 min-h-[2.5rem]">{product.description || '-'}</p>
       </div>
       <div className="flex items-center justify-between mt-6">
         <div>
@@ -35,13 +46,23 @@ const ProductCard = ({ product, onAdd, language, onSelect }) => {
           <span className="text-2xl font-black text-slate-900">{product.price} ₼</span>
         </div>
         <button 
-          onClick={(event) => {
-            event.stopPropagation();
-            onAdd(product);
-          }}
-          className="bg-slate-900 text-white px-4 py-3 rounded-2xl hover:bg-slate-800 active:scale-95 transition-transform font-semibold"
+          onClick={handleAddToCart}
+          className={`w-10 h-10 rounded-2xl transition-all active:scale-95 flex items-center justify-center ${
+            isInCart || addedToCart
+              ? 'bg-emerald-500 text-white shadow-lg'
+              : 'bg-slate-900 text-white hover:bg-slate-800'
+          }`}
+          title={isInCart ? 'Səbətdə var' : 'Kirayə et'}
         >
-          {t.buttons.addToCart}
+          {isInCart || addedToCart ? (
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+          )}
         </button>
       </div>
     </div>

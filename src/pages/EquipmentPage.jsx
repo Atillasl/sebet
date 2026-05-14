@@ -1,39 +1,95 @@
-import React, { useMemo, useState } from 'react';
-import { products } from '../data/products';
-import ProductCard from '../Components/ProductCard';
-import CategoryBar from '../Components/CategoryBar';
+import React, { useEffect, useMemo, useState } from 'react';
+import ProductCard from '../components/ProductCard';
+import CategoryBar from '../components/CategoryBar';
+import { supabase } from '../supabaseClient';
 import { translations, productCategoryLabels } from '../i18n';
 
-const EquipmentPage = ({ onAdd, setPage, language, onSelectProduct }) => {
+const EquipmentPage = ({ onAdd, setPage, language, onSelectProduct, cartItems = [] }) => {
   const t = translations[language];
-  const allCategories = useMemo(() => {
-    const uniqueCategories = Array.from(
-      new Set(products.filter((item) => item.category !== 'Studio').map((item) => item.category))
-    );
-    return ['All', ...uniqueCategories];
-  }, []);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      setError('');
+
+      const ownerId = (process.env.REACT_APP_OWNER_USER_ID || '').trim();
+      let finalData = [];
+      let lastError = null;
+
+      // 1) Preferred path: RPC for public catalog
+      const rpcResult = await supabase.rpc('get_public_catalog');
+      if (!rpcResult.error && Array.isArray(rpcResult.data) && rpcResult.data.length > 0) {
+        finalData = rpcResult.data;
+      } else {
+        lastError = rpcResult.error;
+
+        // 2) Fallback: products.user_id + Available
+        const directResult = await supabase
+          .from('products')
+          .select('id, user_id, warehouse_id, name, category, price, status, image, warehouses(name)')
+          .eq('user_id', ownerId)
+          .eq('status', 'Available');
+
+        if (!directResult.error && Array.isArray(directResult.data) && directResult.data.length > 0) {
+          finalData = directResult.data;
+        } else {
+          lastError = directResult.error || lastError;
+
+          // 3) Fallback: warehouse owner relation + Available
+          const joinResult = await supabase
+            .from('products')
+            .select('id, user_id, warehouse_id, name, category, price, status, image, warehouses!inner(id, name, user_id)')
+            .eq('status', 'Available')
+            .eq('warehouses.user_id', ownerId);
+
+          if (!joinResult.error && Array.isArray(joinResult.data)) {
+            finalData = joinResult.data;
+          } else {
+            lastError = joinResult.error || lastError;
+          }
+        }
+      }
+
+      if (finalData.length > 0) {
+        setProducts(finalData);
+      } else {
+        setProducts([]);
+        if (lastError) {
+          setError(lastError.message || 'Məhsullar yüklənmədi.');
+        }
+      }
+
+      setLoading(false);
+    };
+
+    fetchProducts();
+  }, []);
+
+  const allCategories = useMemo(() => {
+    const uniqueCategories = Array.from(new Set(products.map((item) => item.category).filter(Boolean)));
+    return ['All', ...uniqueCategories];
+  }, [products]);
 
   const filteredProducts = useMemo(() => {
     const normalizedSearch = searchTerm.trim().toLowerCase();
 
     return products.filter((product) => {
-      if (product.category === 'Studio') {
-        return false;
-      }
-
       const matchesCategory = selectedCategory === 'All' || product.category === selectedCategory;
       const matchesSearch =
         normalizedSearch === '' ||
         product.name.toLowerCase().includes(normalizedSearch) ||
-        product.description.toLowerCase().includes(normalizedSearch) ||
+        (product.description || '').toLowerCase().includes(normalizedSearch) ||
         (productCategoryLabels[language][product.category] || product.category).toLowerCase().includes(normalizedSearch);
 
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchTerm, language]);
+  }, [products, selectedCategory, searchTerm, language]);
 
   return (
     <div className="space-y-10">
@@ -66,7 +122,7 @@ const EquipmentPage = ({ onAdd, setPage, language, onSelectProduct }) => {
             </div>
 
             <div className="mt-6 space-y-4">
-              <div className="grid gap-4 sm:grid-cols-[1fr_260px]">
+              <div className="grid gap-4 sm:grid-cols-[1fr]">
                 <label className="relative block">
                   <span className="sr-only">{t.filters.searchLabel}</span>
                   <input
@@ -105,19 +161,32 @@ const EquipmentPage = ({ onAdd, setPage, language, onSelectProduct }) => {
 
           <div>
             <p className="text-sm text-slate-500">
-              {t.categoryCount.replace('{count}', filteredProducts.length)}
+              {loading ? t.filters.loading : t.categoryCount.replace('{count}', filteredProducts.length)}
             </p>
           </div>
 
-          {filteredProducts.length > 0 ? (
+          {error ? (
+            <div className="rounded-3xl border border-red-200 bg-red-50 p-8 text-center text-red-700">
+              {error}
+            </div>
+          ) : loading ? (
+            <div className="rounded-3xl border border-slate-200 bg-white p-12 text-center text-slate-500">
+              {t.filters.loading}
+            </div>
+          ) : filteredProducts.length > 0 ? (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
               {filteredProducts.map((product) => (
                 <ProductCard
                   key={product.id}
-                  product={product}
+                  product={{
+                    ...product,
+                    image: product.image || 'https://via.placeholder.com/720x480?text=No+Image',
+                    description: product.description || '-'
+                  }}
                   onAdd={onAdd}
                   language={language}
                   onSelect={(selected) => onSelectProduct?.(selected, 'equipment')}
+                  cartItems={cartItems}
                 />
               ))}
             </div>

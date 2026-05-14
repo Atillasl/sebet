@@ -7,12 +7,12 @@ import EquipmentPage from './pages/EquipmentPage';
 import AboutPage from './pages/AboutPage';
 import Cart from './pages/Cart';
 import ProductPage from './pages/ProductPage';
-import { translations } from './i18n';
 
 function App() {
   // 1. Initial State: Brauzer yaddaşından datanı oxuyuruq
   // Bu funksiya yalnız proqram ilk dəfə açılanda işləyir (Performance optimization)
   const [cartItems, setCartItems] = useState(() => {
+    localStorage.removeItem('local_cart');
     const savedCart = localStorage.getItem('local_cart');
     return savedCart ? JSON.parse(savedCart) : [];
   });
@@ -116,6 +116,7 @@ function App() {
             setPage={setPage}
             language={language}
             onSelectProduct={openProductPage}
+            cartItems={cartItems}
           />
         ) : page === 'about' ? (
           <AboutPage setPage={setPage} language={language} />
@@ -126,6 +127,7 @@ function App() {
             setPage={setPage}
             language={language}
             onSelectProduct={openProductPage}
+            cartItems={cartItems}
           />
         )}
       </main>
