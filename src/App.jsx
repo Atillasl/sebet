@@ -22,7 +22,8 @@ function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [previousPage, setPreviousPage] = useState('home');
   const [language, setLanguage] = useState(() => {
-    return localStorage.getItem('falkon_language') || 'az';
+    const saved = localStorage.getItem('falkon_language');
+    return saved === 'az' || saved === 'en' ? saved : 'az';
   });
 
   // 2. Side Effect: Səbətdə hər hansı dəyişiklik olanda LocalStorage-a yazırıq

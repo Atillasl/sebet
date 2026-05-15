@@ -1,7 +1,8 @@
 import React from 'react';
 import { translations } from '../i18n';
 
-const Header = ({ countCartItems, setPage, language, setLanguage }) => {
+const Header = ({ countCartItems, setPage, language = 'az', setLanguage }) => {
+  const lang = translations[language] ? language : 'az';
   return (
     <header className="w-full">
       <nav className="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
@@ -15,7 +16,7 @@ const Header = ({ countCartItems, setPage, language, setLanguage }) => {
             </div>
             <div>
               <div className="text-2xl font-black text-gray-900 tracking-tight uppercase leading-none">
-                {translations[language].brand.short}
+                {translations[lang].brand.short}
               </div>
               <div className="text-xs uppercase text-gray-500 tracking-[0.2em] mt-0.5">
                 Cinema Gear
@@ -28,10 +29,10 @@ const Header = ({ countCartItems, setPage, language, setLanguage }) => {
               onClick={() => setPage('equipment')}
               className="hover:text-amber-500 transition-colors"
             >
-              {translations[language].nav.equipment}
+              {translations[lang].nav.equipment}
             </button>
-            <button onClick={() => setPage('studio')} className="hover:text-amber-500 transition-colors">{translations[language].nav.studio}</button>
-            <button onClick={() => setPage('about')} className="hover:text-amber-500 transition-colors">{translations[language].nav.about}</button>
+            <button onClick={() => setPage('studio')} className="hover:text-amber-500 transition-colors">{translations[lang].nav.studio}</button>
+            <button onClick={() => setPage('about')} className="hover:text-amber-500 transition-colors">{translations[lang].nav.about}</button>
           </div>
 
           <div className="flex items-center gap-3">
@@ -42,7 +43,7 @@ const Header = ({ countCartItems, setPage, language, setLanguage }) => {
                   onClick={() => setLanguage(code)}
                   className={`min-w-[38px] rounded-full px-3 py-1 text-xs font-semibold transition ${language === code ? 'bg-slate-900 text-white' : 'text-gray-600 hover:text-slate-900'}`}
                 >
-                  {translations[language].languageNames[code]}
+                  {translations[lang].languageNames[code]}
                 </button>
               ))}
             </div>
