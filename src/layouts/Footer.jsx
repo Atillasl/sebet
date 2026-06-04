@@ -67,10 +67,10 @@ const Footer = ({ setPage, language, setLanguage }) => {
           <div>
             <h4 className="text-white font-bold mb-5 uppercase text-xs tracking-[0.3em]" style={{fontFamily: "'Oswald', sans-serif"}}>{t.footer.contact}</h4>
             <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 rounded-xl bg-[#111] border border-[#222] flex items-center justify-center text-[#888] hover:text-[#F5A623] hover:border-[#F5A623] transition-all">
+              <a href="/" className="w-10 h-10 rounded-xl bg-[#111] border border-[#222] flex items-center justify-center text-[#888] hover:text-[#F5A623] hover:border-[#F5A623] transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
               </a>
-              <a href="#" className="w-10 h-10 rounded-xl bg-[#111] border border-[#222] flex items-center justify-center text-[#888] hover:text-[#F5A623] hover:border-[#F5A623] transition-all">
+              <a href="/" className="w-10 h-10 rounded-xl bg-[#111] border border-[#222] flex items-center justify-center text-[#888] hover:text-[#F5A623] hover:border-[#F5A623] transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-13.5 8.38 8.38 0 0 1 3.8.9L21 3.5Z"></path></svg>
               </a>
             </div>

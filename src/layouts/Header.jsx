@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { translations } from '../i18n';
 
 const Header = ({ countCartItems, setPage, language = 'az', setLanguage }) => {
   const lang = translations[language] ? language : 'az';
-  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <header className="w-full">

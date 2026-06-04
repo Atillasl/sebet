@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Header from './layouts/Header';
 import Footer from './layouts/Footer';
 import Home from './pages/Home';
-import CategoryPage from './pages/CategoryPage';
 import EquipmentPage from './pages/EquipmentPage';
 import AboutPage from './pages/AboutPage';
 import Cart from './pages/Cart';
