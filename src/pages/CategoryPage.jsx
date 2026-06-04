@@ -10,10 +10,10 @@ const CategoryPage = ({ page, onAdd, setPage, language, onSelectProduct, cartIte
   if (!section) {
     return (
       <div className="text-center py-20">
-        <p className="text-xl font-semibold text-gray-700">{t.sectionUnavailable}</p>
+        <p className="text-xl font-semibold text-[#888]">{t.sectionUnavailable}</p>
         <button
           onClick={() => setPage('home')}
-          className="mt-6 inline-flex items-center rounded-2xl bg-amber-500 px-6 py-3 text-sm font-semibold text-white hover:bg-amber-600 transition"
+          className="mt-6 inline-flex items-center rounded-2xl bg-[#F5A623] px-6 py-3 text-sm font-semibold text-black hover:bg-[#d4891a] transition"
         >
           {t.buttons.backHome}
         </button>
@@ -32,7 +32,7 @@ const CategoryPage = ({ page, onAdd, setPage, language, onSelectProduct, cartIte
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/80" />
           <div className="relative z-10 flex h-full flex-col justify-end p-8 sm:p-12">
-            <span className="text-sm uppercase tracking-[0.35em] text-amber-400">{section.title}</span>
+            <span className="text-sm uppercase tracking-[0.35em] text-[#F5A623]">{section.title}</span>
             <h1 className="mt-4 text-4xl sm:text-5xl font-black leading-tight">{section.title}</h1>
             <p className="mt-4 max-w-3xl text-base text-slate-200">{section.description}</p>
           </div>
@@ -42,11 +42,11 @@ const CategoryPage = ({ page, onAdd, setPage, language, onSelectProduct, cartIte
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <button
           onClick={() => setPage('home')}
-          className="inline-flex items-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/10 hover:bg-slate-800 transition"
+          className="inline-flex items-center rounded-2xl bg-[#111] border border-[#333] px-5 py-3 text-sm font-semibold text-white hover:border-[#F5A623] transition"
         >
           ← {t.buttons.backHome}
         </button>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-[#888]">
           {t.categoryCount.replace('{count}', sectionProducts.length)}
         </p>
       </div>
@@ -65,7 +65,7 @@ const CategoryPage = ({ page, onAdd, setPage, language, onSelectProduct, cartIte
           ))}
         </div>
       ) : (
-        <div className="rounded-3xl border border-dashed border-slate-300 bg-white p-12 text-center text-gray-500">
+        <div className="rounded-3xl border border-[#333] bg-[#111] p-12 text-center text-[#888]">
           {t.noProducts}
         </div>
       )}

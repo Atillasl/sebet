@@ -10,20 +10,19 @@ import ProductPage from './pages/ProductPage';
 
 function App() {
   // 1. Initial State: Brauzer yaddaşından datanı oxuyuruq
-  // Bu funksiya yalnız proqram ilk dəfə açılanda işləyir (Performance optimization)
   const [cartItems, setCartItems] = useState(() => {
-    localStorage.removeItem('local_cart');
     const savedCart = localStorage.getItem('local_cart');
     return savedCart ? JSON.parse(savedCart) : [];
   });
   
-  // Səhifə naviqasiyası (home və ya cart)
   const [page, setPage] = useState('home');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [previousPage, setPreviousPage] = useState('home');
+  const [initialCategory, setInitialCategory] = useState('All');
+
   const [language, setLanguage] = useState(() => {
     const saved = localStorage.getItem('falkon_language');
-    return saved === 'az' || saved === 'en' ? saved : 'az';
+    return ['az', 'en', 'ru'].includes(saved) ? saved : 'az';
   });
 
   // 2. Side Effect: Səbətdə hər hansı dəyişiklik olanda LocalStorage-a yazırıq
@@ -78,9 +77,16 @@ function App() {
     setPage('product');
   };
 
+  // Kateqoriya üzrə EquipmentPage-ə yönləndirmə
+  const navigateToCategory = (categoryKey) => {
+    setInitialCategory(categoryKey);
+    setPage('equipment');
+    window.scrollTo(0, 0);
+  };
+
   return (
     // Flex-col və min-h-screen Footer-in aşağıda qalmasını təmin edir
-    <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
+    <div className="min-h-screen bg-[#0a0a0a] flex flex-col" style={{fontFamily: "'DM Sans', sans-serif"}}>
       
       {/* HEADER: Səbət sayını və səhifə keçidini idarə edir */}
       <Header 
@@ -93,7 +99,7 @@ function App() {
       {/* MAIN: Dinamik olaraq Home və ya Cart səhifəsini göstərir */}
       <main className="container mx-auto p-4 md:p-8 flex-grow">
         {page === 'home' ? (
-          <Home onAdd={addToCart} setPage={setPage} language={language} />
+          <Home onAdd={addToCart} setPage={setPage} language={language} onCategoryClick={navigateToCategory} />
         ) : page === 'cart' ? (
           <Cart 
             cartItems={cartItems} 
@@ -118,18 +124,12 @@ function App() {
             language={language}
             onSelectProduct={openProductPage}
             cartItems={cartItems}
+            initialCategory={initialCategory}
           />
         ) : page === 'about' ? (
           <AboutPage setPage={setPage} language={language} />
         ) : (
-          <CategoryPage
-            page={page}
-            onAdd={addToCart}
-            setPage={setPage}
-            language={language}
-            onSelectProduct={openProductPage}
-            cartItems={cartItems}
-          />
+          setPage('home')
         )}
       </main>
 

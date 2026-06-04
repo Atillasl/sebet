@@ -1,19 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [ "./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: 'class',
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
-  },
-  plugins: [],
-}
-
-module.exports = {
-  darkMode: 'class', // Bu sətri əlavə et
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
-  theme: {
-    extend: {},
+    extend: {
+      colors: {
+        background: '#0a0a0a',
+        surface: '#111111',
+        border: '#222222',
+        accent: '#F5A623',
+        text: {
+          primary: '#FFFFFF',
+          secondary: '#888888',
+          muted: '#555555',
+        },
+      },
+    },
   },
   plugins: [],
 }

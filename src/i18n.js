@@ -1,7 +1,7 @@
 export const translations = {
   az: {
     languageLabel: 'Dil',
-    languageNames: { az: 'AZ', en: 'EN' },
+    languageNames: { az: 'AZ', en: 'EN', ru: 'RU' },
     brand: { name: 'Falkon Rent', short: 'Falkon' },
     nav: {
       home: 'Ana Səhifə',
@@ -133,7 +133,7 @@ export const translations = {
   },
   en: {
     languageLabel: 'Language',
-    languageNames: { az: 'AZ', en: 'EN' },
+    languageNames: { az: 'AZ', en: 'EN', ru: 'RU' },
     brand: { name: 'Falkon Rent', short: 'Falkon' },
     nav: {
       home: 'Home',
@@ -262,6 +262,135 @@ export const translations = {
     sectionUnavailable: 'This section does not exist.',
     noProducts: 'No products available in this category yet.',
     currencyPerDay: '/ day'
+  },
+  ru: {
+    languageLabel: 'Язык',
+    languageNames: { az: 'AZ', en: 'EN', ru: 'RU' },
+    brand: { name: 'Falkon Rent', short: 'Falkon' },
+    nav: {
+      home: 'Главная',
+      camera: 'Камеры и Оптика',
+      grip: 'Грип и Управление',
+      lighting: 'Освещение',
+      studio: 'Студия',
+      equipment: 'Оборудование',
+      about: 'О нас',
+      cart: 'Корзина'
+    },
+    hero: {
+      headline: 'Кинокамеры, свет и студийная аренда для ваших съемок.',
+      subtitle: 'Арендуйте профессиональное кинооборудование с быстрым и надежным обслуживанием.'
+    },
+    equipmentDescription: 'Выбирайте между камерами, грипом и осветительным оборудованием.',
+    exploreTitle: 'Узнайте больше о Falkon',
+    exploreHeadline: 'Выберите категорию оборудования для ваших съемок.',
+    exploreSubtitle: 'Камеры, свет, грип и студийные ресурсы для вашего проекта.',
+    categories: {
+      camera: {
+        title: 'Камеры и Оптика',
+        subtitle: 'Кинообъективы и корпуса',
+        description: 'Решения для кинокамер и профессиональной оптики.'
+      },
+      lighting: {
+        title: 'Освещение',
+        subtitle: 'Студийный свет и LED панели',
+        description: 'Профессиональный свет для формирования каждой сцены.'
+      },
+      grip: {
+        title: 'Грип и Управление',
+        subtitle: 'Стабилизаторы и риги',
+        description: 'Системы стабилизации для динамичных съемок.'
+      },
+      studio: {
+        title: 'Студия',
+        subtitle: 'Студии и павильоны',
+        description: 'Оборудованные пространства для премиальных съемок.'
+      }
+    },
+    filters: {
+      title: 'Фильтр оборудования',
+      subtitle: 'Фильтруйте товары по поиску и категориям.',
+      searchLabel: 'Поиск',
+      searchPlaceholder: 'Поиск по названию или категории...',
+      warehouseLabel: 'Склад',
+      allCategories: 'Все категории',
+      allWarehouses: 'Все склады',
+      loading: 'Загрузка...',
+      categoryTitle: 'Категории',
+      categoryDescription: 'Фильтруйте оборудование.'
+    },
+    about: {
+      title: 'О Falkon',
+      description: 'Мы предлагаем в аренду кинооборудование и студии.',
+      whyTitle: 'Почему мы?',
+      whyText: 'Falkon Rent предлагает профессиональную и быструю аренду оборудования.',
+      missionTitle: 'Наша миссия',
+      missionText: 'Предоставлять качественное оборудование для профессионалов.',
+      valuesTitle: 'Наши ценности',
+      valuesText: 'Надежность и скорость — наши приоритеты.',
+      note: 'Сделайте выбор в соответствии с вашим проектом.'
+    },
+    projects: {
+      label: 'Избранные проекты',
+      title: 'Работы с оборудованием Falkon',
+      subtitle: 'Истории, созданные с нашей техникой.'
+    },
+    footer: {
+      about: 'Профессиональная аренда оборудования для кино и медиа.',
+      links: 'Ссылки',
+      contact: 'Контакты',
+      email: 'info@falkonrent.az',
+      legal: '© {year} Falkon Rent. Все права защищены.',
+      social: {
+        instagram: 'Instagram',
+        telegram: 'Telegram',
+        whatsapp: 'WhatsApp'
+      }
+    },
+    buttons: {
+      home: 'Главная',
+      backHome: 'На главную',
+      viewPage: 'Посмотреть товары',
+      addToCart: 'Арендовать',
+      continueShopping: 'Продолжить покупки',
+      checkout: 'Оформить заказ',
+      close: 'Закрыть'
+    },
+    cart: {
+      title: 'Ваша корзина',
+      emptyTitle: 'Корзина пуста',
+      emptyText: 'Вы еще ничего не выбрали.',
+      orderSummary: 'Итого по заказу',
+      itemsTotal: 'Сумма:',
+      total: 'Итого:',
+      safe: 'Гарантия безопасной оплаты.',
+      contactTitle: 'Контакты',
+      contactPhone: 'Телефон',
+      contactPhonePlaceholder: '+994 00 000 00 00',
+      contactEmail: 'Email',
+      contactEmailPlaceholder: 'example@mail.com',
+      contactNotes: 'Примечания',
+      contactNotesPlaceholder: 'Адрес или примечания...',
+      contactHiddenNote: 'Данные появятся после заказа.',
+      contactOpenNote: 'Ваш заказ принят. Введите данные.',
+      dailyRent: 'Аренда в день',
+      totalLabel: 'Всего',
+      orderModalTitle: 'Данные заказа',
+      customerName: 'Имя Фамилия',
+      requiredFieldsError: 'Заполните обязательные поля.',
+      orderSuccess: 'Заказ принят!',
+      orderError: 'Ошибка при отправке.',
+      sendingOrder: 'Отправка...'
+    },
+    productPage: {
+      back: 'Назад в категорию',
+      aboutTitle: 'О товаре',
+      aboutNote: 'Детали будут написаны здесь.'
+    },
+    categoryCount: '{count} товаров доступно.',
+    sectionUnavailable: 'Раздел недоступен.',
+    noProducts: 'В этой категории пока нет товаров.',
+    currencyPerDay: '/ день'
   }
 };
 
@@ -279,6 +408,13 @@ export const productCategoryLabels = {
     'Grip & Remote': 'Grip & Remote',
     Studio: 'Studio',
     Filters: 'Filters'
+  },
+  ru: {
+    'Camera & Optics': 'Камеры и Оптика',
+    Lighting: 'Освещение',
+    'Grip & Remote': 'Грип и Управление',
+    Studio: 'Студия',
+    Filters: 'Фильтры'
   }
 };
 

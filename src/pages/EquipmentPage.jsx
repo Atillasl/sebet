@@ -98,7 +98,7 @@ const EquipmentPage = ({ onAdd, setPage, language, onSelectProduct, cartItems = 
           <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/274973/pexels-photo-274973.jpeg?auto=compress&cs=tinysrgb&w=1200')] bg-cover bg-center" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/80" />
           <div className="relative z-10 flex h-full flex-col justify-end p-8 sm:p-12">
-            <span className="text-sm uppercase tracking-[0.35em] text-amber-400">{t.nav.equipment}</span>
+            <span className="text-sm uppercase tracking-[0.35em] text-[#F5A623]">{t.nav.equipment}</span>
             <h1 className="mt-4 text-4xl sm:text-5xl font-black leading-tight">{t.nav.equipment}</h1>
             <p className="mt-4 max-w-3xl text-base text-slate-200">{t.equipmentDescription}</p>
           </div>
@@ -107,15 +107,15 @@ const EquipmentPage = ({ onAdd, setPage, language, onSelectProduct, cartItems = 
 
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <div className="space-y-6">
-          <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-lg">
+          <div className="rounded-[2rem] border border-[#222] bg-[#111] p-6 shadow-lg">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h2 className="text-2xl font-black text-slate-900">{t.filters.title}</h2>
-                <p className="mt-2 text-sm text-slate-500">{t.filters.subtitle}</p>
+                <h2 className="text-2xl font-black text-white">{t.filters.title}</h2>
+                <p className="mt-2 text-sm text-[#888]">{t.filters.subtitle}</p>
               </div>
               <button
                 onClick={() => setPage('home')}
-                className="inline-flex items-center rounded-2xl bg-amber-500 px-5 py-3 text-sm font-semibold text-white hover:bg-amber-600 transition"
+                className="inline-flex items-center rounded-2xl bg-[#F5A623] px-5 py-3 text-sm font-semibold text-black hover:bg-[#d4891a] transition"
               >
                 {t.buttons.backHome}
               </button>
@@ -129,7 +129,7 @@ const EquipmentPage = ({ onAdd, setPage, language, onSelectProduct, cartItems = 
                     value={searchTerm}
                     onChange={(event) => setSearchTerm(event.target.value)}
                     placeholder={t.filters.searchPlaceholder}
-                    className="w-full rounded-3xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm text-slate-700 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-200"
+                    className="w-full rounded-3xl border border-[#333] bg-[#1a1a1a] px-5 py-4 text-sm text-white outline-none transition focus:border-[#F5A623] focus:ring-2 focus:ring-[#F5A623]/20"
                   />
                 </label>
               </div>
@@ -160,7 +160,7 @@ const EquipmentPage = ({ onAdd, setPage, language, onSelectProduct, cartItems = 
           </div>
 
           <div>
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-[#888]">
               {loading ? t.filters.loading : t.categoryCount.replace('{count}', filteredProducts.length)}
             </p>
           </div>
@@ -170,7 +170,7 @@ const EquipmentPage = ({ onAdd, setPage, language, onSelectProduct, cartItems = 
               {error}
             </div>
           ) : loading ? (
-            <div className="rounded-3xl border border-slate-200 bg-white p-12 text-center text-slate-500">
+            <div className="rounded-3xl border border-[#333] bg-[#111] p-12 text-center text-[#888]">
               {t.filters.loading}
             </div>
           ) : filteredProducts.length > 0 ? (
@@ -191,16 +191,16 @@ const EquipmentPage = ({ onAdd, setPage, language, onSelectProduct, cartItems = 
               ))}
             </div>
           ) : (
-            <div className="rounded-3xl border border-dashed border-slate-300 bg-white p-12 text-center text-gray-500">
+            <div className="rounded-3xl border border-[#333] bg-[#111] p-12 text-center text-[#888]">
               {t.noProducts}
             </div>
           )}
         </div>
 
-        <aside className="space-y-6 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-lg">
+        <aside className="space-y-6 rounded-[2rem] border border-[#222] bg-[#111] p-6 shadow-lg">
           <div>
-            <h3 className="text-lg font-bold text-slate-900">{t.filters.categoryTitle}</h3>
-            <p className="mt-2 text-sm text-slate-500">{t.filters.categoryDescription}</p>
+            <h3 className="text-lg font-bold text-white">{t.filters.categoryTitle}</h3>
+            <p className="mt-2 text-sm text-[#888]">{t.filters.categoryDescription}</p>
           </div>
           <div className="grid gap-3">
             {allCategories.map((category) => {
@@ -209,7 +209,7 @@ const EquipmentPage = ({ onAdd, setPage, language, onSelectProduct, cartItems = 
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`rounded-2xl px-4 py-3 text-left text-sm font-semibold transition ${selectedCategory === category ? 'bg-amber-500 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
+                  className={`rounded-2xl px-4 py-3 text-left text-sm font-semibold transition ${selectedCategory === category ? 'bg-[#F5A623] text-black' : 'bg-[#1a1a1a] text-[#aaa] hover:bg-[#222] hover:text-white'}`}
                 >
                   {label}
                 </button>

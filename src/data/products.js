@@ -49,18 +49,10 @@ export const products = [
   },
   {
     id: 7,
-    name: "Tiffen ND Filter Seti",
-    price: 40,
-    category: "Filters",
-    description: "Filtr dəsti açıq havada dəqiq ekspozisiya üçün.",
-    image: "https://via.placeholder.com/400x300?text=ND+Filters"
-  },
-  {
-    id: 8,
     name: "Profoto Softbox 3",
     price: 110,
     category: "Studio",
     description: "Studiya şəraitində yumşaq işıqlandırma.",
-    image: "https://via.placeholder.com/400x300?text=Softbox+3"
+    image: "https://images.pexels.com/photos/789349/pexels-photo-789349.jpeg?auto=compress&cs=tinysrgb&w=800"
   }
 ];
