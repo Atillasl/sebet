@@ -45,7 +45,7 @@ export const products = [
     price: 50,
     category: "Lighting",
     description: "Film çəkilişləri üçün yumşaq və tənzimlənən işıq.",
-    image: "https://via.placeholder.com/400x300?text=Godox+SL-60W"
+    image: "https://va.placeholder.com/400x300?text=Godox+SL-60W"
   },
   {
     id: 7,
